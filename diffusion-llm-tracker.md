@@ -67,9 +67,17 @@ scope rather than padded in (see Couldn't verify).
 <!-- Open questions, papers to read, people/labs to track, predictions with
 dates. Resolved items move to the "Resolved" note below with the outcome. -->
 
-- **Papers to read:** _(none yet)_
-- **People / labs to track:** _(seed via the monthly blind-spot audit)_
-- **Open questions:** _(none yet)_
+- **Papers to read:**
+  - [Halton Scheduler for Masked Generative Image Transformer](https://arxiv.org/abs/2503.17076) (ICLR 2025) — low-discrepancy, training-free unmasking schedule; test the 1-D text analogue against confidence-based decoding.
+  - [Chatterbox-Flash](https://arxiv.org/abs/2605.30748) — marginal-subtracted confidence scoring for parallel unmasking; cheap to try on any dLLM's decoder.
+  - [Discrete Neural Flow Samplers](https://arxiv.org/pdf/2505.17741) / [Scalable Discrete Diffusion Samplers](https://arxiv.org/abs/2502.08696) — data-free CTMC samplers from an energy; reframes alignment as sampler design rather than RL-on-samples.
+- **People / labs to track (seeded 2026-08-01):**
+  - Lindsten group, Linköping University — symmetry-constrained discrete diffusion ([WyckoffDiff](https://proceedings.mlr.press/v267/ekstrom-kelvinius25a.html)); watch for the "design the forward process to match domain corruption" idea generalizing to text.
+  - Linderman Lab, Stanford (w/ MSR) — [Informed Correctors / k-Gillespie's](https://arxiv.org/abs/2407.21243), [code](https://github.com/lindermanlab/informed-correctors); model-informed predictor-correctors for low-NFE sampling, directly relevant to dLLM decoding speed.
+  - Apple ML Research discrete-sampler line — [Discrete Neural Flow Samplers](https://machinelearning.apple.com/research/discrete-neural-flow); track for reward-tilted sampling as an alternative to GRPO-style dLLM RL.
+- **Open questions:**
+  - Does a low-discrepancy (Halton-style) unmasking schedule beat confidence-based decoding for text dLLMs? (from finding #2, 2026-08-01 audit)
+  - What is the "linguistically natural" corruption process for text diffusion — i.e., is generic uniform masking leaving performance on the table the way it did for ScDiVa (dropout-shaped) and WyckoffDiff (symmetry-shaped)? (from finding #9, 2026-08-01 audit)
 - **Predictions (with dates):** _(none yet)_
 
 ### Resolved
@@ -84,7 +92,46 @@ _(none yet)_
 fields / venues / labs surfaced, citation-expansion clusters, keyword-drift
 leads. These become new Watchlist entries. -->
 
-_(no audit has run yet)_
+### 2026-08-01 (first blind-spot audit)
+
+Anchor: **MDLM** (current applied non-NLP work forks from it — any BERT-style
+domain encoder becomes a generator by reweighting the MLM loss). D3PM pulled
+in separately for the materials/symmetry cluster where it's still the cited
+root. Full move-by-move detail (citation clusters, keyword-drift search
+vocab) lives in the agent transcript; this entry keeps the ranked synthesis.
+
+**Ranked findings (most likely to change how you approach your own work, first):**
+
+1. **Prior-calibrated confidence scoring** (speech TTS) — unmasking confidence is contaminated by token marginals; subtract the block-level marginal before ranking. One-line change, testable tonight on any dLLM. [arXiv 2605.30748](https://arxiv.org/abs/2605.30748) — preprint
+2. **Halton / low-discrepancy unmasking schedule** (vision, ICLR'25) — drop confidence-based selection, pick positions via a quasi-random low-discrepancy sequence to decorrelate the parallel batch. Training-free; the 1-D text analogue looks unclaimed. [arXiv 2503.17076](https://arxiv.org/abs/2503.17076) — top-tier
+3. **Data-free discrete diffusion samplers from an energy** (ICLR'25 + NeurIPS'25) — reframes dLLM alignment as learning a CTMC rate matrix whose stationary law *is* the reward-tilted distribution, instead of RL on samples. [arXiv 2502.08696](https://arxiv.org/abs/2502.08696), [arXiv 2505.17741](https://arxiv.org/pdf/2505.17741) — top-tier
+4. **Edit Flows + CTC-seeded refinement** (NeurIPS'25 / speech) — kills the fixed-canvas/padding assumption via an insert-delete-substitute CTMC; ASR adds "seed with a cheap alignment draft, then refine." [arXiv 2506.09018](https://arxiv.org/abs/2506.09018), [arXiv 2606.28732](https://arxiv.org/abs/2606.28732) — top-tier + preprint
+5. **Parallel-in-time Picard sampling** — parallelize over diffusion *steps* rather than tokens; composes with token-parallel decoding, unclaimed in dLLM-land. [arXiv 2607.00773](https://arxiv.org/abs/2607.00773) — preprint
+6. **Informed correctors / k-Gillespie's** (NeurIPS'25) — model-informed predictor-corrector; better quality-per-NFE at low step counts. [arXiv 2407.21243](https://arxiv.org/abs/2407.21243), [code](https://github.com/lindermanlab/informed-correctors) — top-tier
+7. **Discrete Walk-Jump Sampling** (ICLR'24 Outstanding Paper) — abandon the noise schedule entirely: one noise level, Langevin MCMC in smoothed space, one-step project back. Strongest empirical validation here (wet-lab, 97.5-100% expression success). [arXiv 2306.12360](https://arxiv.org/abs/2306.12360) — top-tier
+8. **Amortized twisted SMC (CDM)** — asymptotically exact reward-tilted sampling at <5% overhead; rigorous alternative to GRPO-style dLLM RL. [arXiv 2605.23346](https://arxiv.org/abs/2605.23346) — preprint
+9. **Domain-shaped forward processes** (ScDiVa, WyckoffDiff) — design the corruption process to match real data corruption (scRNA dropout) or quotient out invariances (crystal symmetry), instead of generic uniform masking. Open question for text. [arXiv 2602.03477](https://arxiv.org/abs/2602.03477), [arXiv 2502.06485](https://arxiv.org/abs/2502.06485) — top-tier
+10. **Gibbs correctors (GADD)** — training-free acceleration for uniform-rate (non-absorbing) models, relevant if revisiting SEDD-style uniform noise for self-correction. [arXiv 2605.27352](https://arxiv.org/abs/2605.27352) — preprint
+11. **Fixed-point-iteration one-step distillation** (vision) — a distillation recipe distinct from distribution matching (DiDi-Instruct); vision is ahead of text here. [arXiv 2605.21484](https://arxiv.org/pdf/2605.21484) — preprint
+12. **Kinetic-optimal paths / discrete Schrödinger bridges** — principled path design vs. hand-tuned mask schedules; longer-horizon bet. [arXiv 2412.03487](https://arxiv.org/pdf/2412.03487), [arXiv 2509.23348](https://arxiv.org/pdf/2509.23348) — top-tier / preprint
+13. **Protein/DNA method-reuse cluster** (MeMDLM, MapDiff, D3-for-DNA) — mostly confirms the MDLM/SEDD toolkit travels; useful as a collaboration surface / wet-lab-grade eval discipline more than a new technique. [MeMDLM](https://openreview.net/forum?id=SeslKuVb6z), [MapDiff](https://www.nature.com/articles/s42256-025-01042-6), [D3](https://www.biorxiv.org/content/10.1101/2024.05.23.595630v3.full) — mixed
+
+**5 unwatched venues/labs/communities (one verified result each):**
+
+- Interspeech/ICASSP + neural-audio-codec community — [ADDSE, Interspeech 2026](https://arxiv.org/abs/2602.22417) (hierarchical RVQ discrete diffusion)
+- Lindsten group, Linköping Univ. + ML4Science materials circuit — [WyckoffDiff, ICML 2025](https://proceedings.mlr.press/v267/ekstrom-kelvinius25a.html)
+- Neural-sampler / stat-physics community (Imperial + Apple ML Research) — [Discrete Neural Flow Samplers, NeurIPS 2025](https://machinelearning.apple.com/research/discrete-neural-flow)
+- Linderman Lab, Stanford + MSR — [Informed Correctors, NeurIPS 2025](https://arxiv.org/abs/2407.21243)
+- Virtual-cell/single-cell foundation-model community — [ScDiVa, ICML 2026](https://arxiv.org/abs/2602.03477)
+- (bonus) RL/robotics diffusion-policy line — [Awesome-Robotics-Diffusion](https://github.com/showlab/Awesome-Robotics-Diffusion) feed; concrete item [arXiv 2509.22963](https://arxiv.org/abs/2509.22963)
+
+**Couldn't verify / flagged by the scout as its own inference, not sourced:**
+- Venue of arXiv 2509.22963 (discrete diffusion RL policies) — OpenReview record exists but acceptance/venue unconfirmed; treat as preprint.
+- MapDiff exact publication date conflicting in search snippets (June 2025 vs Feb 2026); journal/DOI solid, date not.
+- Chatterbox-Flash (item 1) exact month conflicting (May vs June 2026); arXiv ID implies May.
+- ScDiVa's ICML 2026 poster page was search-attested only, not page-confirmed directly.
+- "Has not crossed into text diffusion" (Move 2 framing) is the scout's inference from negative search results, not a systematic lit check — highest confidence on Halton scheduling and prior-calibrated confidence being genuinely unclaimed; lowest confidence on variable-length edit modeling, since Edit Flows itself already ran text benchmarks.
+- Move 1 cluster sizes are impressionistic (no full citation-graph pull).
 
 ---
 
