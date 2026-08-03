@@ -36,6 +36,34 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-08-03 (scan)
+
+Window: 2026-07-30 to 2026-08-03 (since the 2026-07-31 scan). Thin cycle — after
+~20 targeted searches across arXiv (cs.CL/cs.LG/cs.AI), Hugging Face Daily
+Papers, alphaXiv, and social lead-generators, no diffusion-LM item could be
+confirmed with a search-verified submission date strictly inside the window;
+most likely search-index lag on very recent arXiv IDs rather than a genuinely
+quiet week (this framing is the scout's own inference, not sourced — see
+below). 4 items listed, not padded to 8 — per the rubric, a short honest list
+beats padding.
+
+1. 5 | [Mean-to-Score Discrete Diffusion: Posterior-Mean Denoisers for Score Entropy](https://arxiv.org/abs/2607.21372) — theoretical unification connecting denoiser/cavity/score parameterizations for discrete diffusion; bears directly on score-entropy-style training objectives (SEDD lineage). arXiv preprint (no code/weights confirmed) — [NEW]
+2. 5 | [UNIFUSION: Adapting Autoregressive LMs into Discrete Diffusion under a Unified Reverse-Rate Objective](https://arxiv.org/abs/2607.24507) — expresses SEDD/MDLM/GIDD/M2S/Neural-CTMC losses as one generalized KL objective over reverse rates; continual-pretrains GPT-2 checkpoints into uniform-noise diffusion, reports best-in-class WinoGrande/SIQA/BBH among compared diffusion models. arXiv preprint (no code/weights confirmed) — [NEW]
+3. 4 | [Explorative Modeling: Unlocking a Third Pretraining Axis and End-to-End Generation](https://arxiv.org/abs/2607.27372) — Gladstone, Ji, Du (UIUC/Harvard); proposes "exploration" (best-of-K training-time candidate matching) as a scaling axis alongside params/data, claims 4.1x FLOP / 6.2x sample efficiency gains spanning continuous and discrete (language) domains; code released on GitHub. Plausibly transfers to diffusion-LM training. arXiv preprint + code — [NEW]
+4. 2 | [COLM 2026 "NonAR-LM" workshop](https://pengzhangzhi.github.io/NonAR-LM/) — dedicated venue for diffusion/flow-matching/any-order generation (Oct 9, 2026, San Francisco); notifications went out July 24; invited talk from Shansan Gong (HKU) on flexible generation order in diffusion LMs. Community/traction signal, not a paper — lab blog / event page — [NEW]
+
+**Couldn't verify:**
+- Full abstracts of items #1 and #2 — search surfaced only title/author/reference-context snippets, not primary abstract text.
+- Whether #1 or #2 has released code/weights — no GitHub repo surfaced for either; tiered as arXiv-preprint-only, not preprint+code, pending confirmation.
+- Whether anything genuinely new was posted to arXiv Aug 1–3 specifically — could not rule out search-index lag; worth a direct `arxiv.org/list/cs.CL/recent` check next cycle instead of relying on search engines alone.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- That items #1 and #2 are companion works from an overlapping author group — inferred from shared names in search snippets, not stated explicitly by either paper.
+- That the absence of confirmed 2026-07-30–08-03 items reflects search-index lag rather than a genuinely quiet week — speculation, not sourced.
+- That this window's general frontier-LLM releases (DeepSeek-V4-Flash-0731, Claude Opus 5, Gemini 3.6 Flash, GPT-5.6) are non-field-shifting for diffusion-LM research and thus excluded — a judgment call, not a sourced fact (the releases themselves are search-sourced; the exclusion decision is the scout's).
+
+---
+
 ### 2026-07-31 (scan)
 
 First-ever scan for this tracker — window widened to ~7 days (2026-07-24 to
