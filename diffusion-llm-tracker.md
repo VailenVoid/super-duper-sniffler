@@ -36,6 +36,36 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-08-06 (scan)
+
+Window: 2026-08-02 to 2026-08-06 (since the 2026-08-03 scan). Active but
+incremental: five new arXiv preprints, all with IDs implying ~Aug 3, 2026
+submission, clustered on decoding/sampling/inference-efficiency for diffusion
+LMs (speculative-style draft-refine, MoE compute allocation, diversity
+guidance). None rises to a new-training-objective or scaling-law-level
+result. No code releases found for any item. No follow-up on the four items
+logged in the 2026-08-03 entry (Mean-to-Score, UNIFUSION, Explorative
+Modeling, NonAR-LM workshop) — not re-listed. 5 items, not padded to 8 — per
+the rubric, a short honest list beats padding.
+
+1. 5 | [AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion LM](https://arxiv.org/abs/2608.02602) — query-based encoder-decoder + block-causal diffusion transformer trained via flow matching; direct lineage to continuous-latent (vs. discrete) diffusion LM approaches. arXiv preprint, submitted ~2026-08-03 — [NEW]
+2. 5 | [Speculative Correction: Draft-then-Refine Decoding for Diffusion LMs](https://arxiv.org/abs/2608.02625) — plug-and-play draft-then-bidirectionally-refine inference pattern on LLaDA2.1 Flash/Mini; reports GSM8K-384 0.848→0.899 and MBPP-384 0.545→0.693 with 1.2x speedup. Directly relevant to sampling/decoding schedule design. arXiv preprint — [NEW] (submission date conflict, see below)
+3. 5 | [Exploring More to Solve More: Boosting Diversity in Text Diffusion via Entropy-Based Guidance (SAKE)](https://arxiv.org/abs/2608.00024) — training-free order-2 Rényi/kernel-entropy guidance that dynamically reshapes the sampling distribution for a fidelity/diversity tradeoff; core sampling-schedule contribution. arXiv preprint — [NEW] (submission date conflict, see below)
+4. 4 | [REFLEX: Rethinking MoE Inference as Refinement-Aware Compute Allocation in Diffusion LMs](https://arxiv.org/abs/2608.01784) — reframes MoE expert-routing budget around per-token refinement state rather than uniform allocation; efficiency trick specific to DLM inference, submitted to AAAI 2027. arXiv preprint, submitted ~2026-08-03 — [NEW]
+5. 4 | [xPress: Parallel Refinement for Diffusion Drafters in Speculative Decoding](https://arxiv.org/abs/2608.02438) — lightweight causal refiner that reconciles a block-diffusion draft (e.g. dFlash) into a jointly-plausible sequence before acceptance, addressing the "marginals not joint distribution" failure mode of block-diffusion drafting. Authors incl. Zheng Wang, Davis Wertheimer, Minjia Zhang. arXiv preprint, submitted ~2026-08-03 — [NEW]
+
+**Couldn't verify:**
+- Exact submission date for arXiv 2608.00024 (SAKE) — one retrieved summary said "10 Jul 2026," inconsistent with its 2608 (August) ID prefix; needs a direct arXiv listing-page check next cycle.
+- Exact submission date for arXiv 2608.02625 (Speculative Correction) — one retrieved summary said "July 21, 2026," also inconsistent with the ID; content/results are corroborated across multiple hits, the date is not.
+- Code/weight release status for all five items above — no GitHub links surfaced for any; tiered as arXiv-preprint-only pending confirmation.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Framing AURORA-LM as "direct lineage to continuous-latent diffusion LM work" is the scout's own characterization, not a stated claim in the retrieved summaries.
+- Framing REFLEX and xPress as tier-4 "plausibly transfer" efficiency tricks is the scout's own relevance judgment, not sourced.
+- A search snippet mentioned "Qwen3.8 Max" (Aug 2, 2026) and an "LLM 0.32" tool release (Aug 4, 2026) — excluded as tangential/tooling news, not independently verified beyond a single snippet, and judged non-field-shifting for diffusion-LM research (a judgment call, not a sourced fact).
+
+---
+
 ### 2026-08-03 (scan)
 
 Window: 2026-07-30 to 2026-08-03 (since the 2026-07-31 scan). Thin cycle — after
