@@ -36,7 +36,87 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
-_(empty — awaiting first scan)_
+### 2026-08-06 (scan)
+
+Window: 2026-08-02 to 2026-08-06 (since the 2026-08-03 scan). Active but
+incremental: five new arXiv preprints, all with IDs implying ~Aug 3, 2026
+submission, clustered on decoding/sampling/inference-efficiency for diffusion
+LMs (speculative-style draft-refine, MoE compute allocation, diversity
+guidance). None rises to a new-training-objective or scaling-law-level
+result. No code releases found for any item. No follow-up on the four items
+logged in the 2026-08-03 entry (Mean-to-Score, UNIFUSION, Explorative
+Modeling, NonAR-LM workshop) — not re-listed. 5 items, not padded to 8 — per
+the rubric, a short honest list beats padding.
+
+1. 5 | [AURORA-LM: Autoencoding Unified Representation for Continuous-Latent Diffusion LM](https://arxiv.org/abs/2608.02602) — query-based encoder-decoder + block-causal diffusion transformer trained via flow matching; direct lineage to continuous-latent (vs. discrete) diffusion LM approaches. arXiv preprint, submitted ~2026-08-03 — [NEW]
+2. 5 | [Speculative Correction: Draft-then-Refine Decoding for Diffusion LMs](https://arxiv.org/abs/2608.02625) — plug-and-play draft-then-bidirectionally-refine inference pattern on LLaDA2.1 Flash/Mini; reports GSM8K-384 0.848→0.899 and MBPP-384 0.545→0.693 with 1.2x speedup. Directly relevant to sampling/decoding schedule design. arXiv preprint — [NEW] (submission date conflict, see below)
+3. 5 | [Exploring More to Solve More: Boosting Diversity in Text Diffusion via Entropy-Based Guidance (SAKE)](https://arxiv.org/abs/2608.00024) — training-free order-2 Rényi/kernel-entropy guidance that dynamically reshapes the sampling distribution for a fidelity/diversity tradeoff; core sampling-schedule contribution. arXiv preprint — [NEW] (submission date conflict, see below)
+4. 4 | [REFLEX: Rethinking MoE Inference as Refinement-Aware Compute Allocation in Diffusion LMs](https://arxiv.org/abs/2608.01784) — reframes MoE expert-routing budget around per-token refinement state rather than uniform allocation; efficiency trick specific to DLM inference, submitted to AAAI 2027. arXiv preprint, submitted ~2026-08-03 — [NEW]
+5. 4 | [xPress: Parallel Refinement for Diffusion Drafters in Speculative Decoding](https://arxiv.org/abs/2608.02438) — lightweight causal refiner that reconciles a block-diffusion draft (e.g. dFlash) into a jointly-plausible sequence before acceptance, addressing the "marginals not joint distribution" failure mode of block-diffusion drafting. Authors incl. Zheng Wang, Davis Wertheimer, Minjia Zhang. arXiv preprint, submitted ~2026-08-03 — [NEW]
+
+**Couldn't verify:**
+- Exact submission date for arXiv 2608.00024 (SAKE) — one retrieved summary said "10 Jul 2026," inconsistent with its 2608 (August) ID prefix; needs a direct arXiv listing-page check next cycle.
+- Exact submission date for arXiv 2608.02625 (Speculative Correction) — one retrieved summary said "July 21, 2026," also inconsistent with the ID; content/results are corroborated across multiple hits, the date is not.
+- Code/weight release status for all five items above — no GitHub links surfaced for any; tiered as arXiv-preprint-only pending confirmation.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Framing AURORA-LM as "direct lineage to continuous-latent diffusion LM work" is the scout's own characterization, not a stated claim in the retrieved summaries.
+- Framing REFLEX and xPress as tier-4 "plausibly transfer" efficiency tricks is the scout's own relevance judgment, not sourced.
+- A search snippet mentioned "Qwen3.8 Max" (Aug 2, 2026) and an "LLM 0.32" tool release (Aug 4, 2026) — excluded as tangential/tooling news, not independently verified beyond a single snippet, and judged non-field-shifting for diffusion-LM research (a judgment call, not a sourced fact).
+
+---
+
+### 2026-08-03 (scan)
+
+Window: 2026-07-30 to 2026-08-03 (since the 2026-07-31 scan). Thin cycle — after
+~20 targeted searches across arXiv (cs.CL/cs.LG/cs.AI), Hugging Face Daily
+Papers, alphaXiv, and social lead-generators, no diffusion-LM item could be
+confirmed with a search-verified submission date strictly inside the window;
+most likely search-index lag on very recent arXiv IDs rather than a genuinely
+quiet week (this framing is the scout's own inference, not sourced — see
+below). 4 items listed, not padded to 8 — per the rubric, a short honest list
+beats padding.
+
+1. 5 | [Mean-to-Score Discrete Diffusion: Posterior-Mean Denoisers for Score Entropy](https://arxiv.org/abs/2607.21372) — theoretical unification connecting denoiser/cavity/score parameterizations for discrete diffusion; bears directly on score-entropy-style training objectives (SEDD lineage). arXiv preprint (no code/weights confirmed) — [NEW]
+2. 5 | [UNIFUSION: Adapting Autoregressive LMs into Discrete Diffusion under a Unified Reverse-Rate Objective](https://arxiv.org/abs/2607.24507) — expresses SEDD/MDLM/GIDD/M2S/Neural-CTMC losses as one generalized KL objective over reverse rates; continual-pretrains GPT-2 checkpoints into uniform-noise diffusion, reports best-in-class WinoGrande/SIQA/BBH among compared diffusion models. arXiv preprint (no code/weights confirmed) — [NEW]
+3. 4 | [Explorative Modeling: Unlocking a Third Pretraining Axis and End-to-End Generation](https://arxiv.org/abs/2607.27372) — Gladstone, Ji, Du (UIUC/Harvard); proposes "exploration" (best-of-K training-time candidate matching) as a scaling axis alongside params/data, claims 4.1x FLOP / 6.2x sample efficiency gains spanning continuous and discrete (language) domains; code released on GitHub. Plausibly transfers to diffusion-LM training. arXiv preprint + code — [NEW]
+4. 2 | [COLM 2026 "NonAR-LM" workshop](https://pengzhangzhi.github.io/NonAR-LM/) — dedicated venue for diffusion/flow-matching/any-order generation (Oct 9, 2026, San Francisco); notifications went out July 24; invited talk from Shansan Gong (HKU) on flexible generation order in diffusion LMs. Community/traction signal, not a paper — lab blog / event page — [NEW]
+
+**Couldn't verify:**
+- Full abstracts of items #1 and #2 — search surfaced only title/author/reference-context snippets, not primary abstract text.
+- Whether #1 or #2 has released code/weights — no GitHub repo surfaced for either; tiered as arXiv-preprint-only, not preprint+code, pending confirmation.
+- Whether anything genuinely new was posted to arXiv Aug 1–3 specifically — could not rule out search-index lag; worth a direct `arxiv.org/list/cs.CL/recent` check next cycle instead of relying on search engines alone.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- That items #1 and #2 are companion works from an overlapping author group — inferred from shared names in search snippets, not stated explicitly by either paper.
+- That the absence of confirmed 2026-07-30–08-03 items reflects search-index lag rather than a genuinely quiet week — speculation, not sourced.
+- That this window's general frontier-LLM releases (DeepSeek-V4-Flash-0731, Claude Opus 5, Gemini 3.6 Flash, GPT-5.6) are non-field-shifting for diffusion-LM research and thus excluded — a judgment call, not a sourced fact (the releases themselves are search-sourced; the exclusion decision is the scout's).
+
+---
+
+### 2026-07-31 (scan)
+
+First-ever scan for this tracker — window widened to ~7 days (2026-07-24 to
+2026-07-31) instead of the usual 4, to avoid missing anything on a cold start.
+7 items listed, not 8 — a borderline 8th candidate was dropped for unclear
+scope rather than padded in (see Couldn't verify).
+
+1. 5 | [Where and When to Commit: Candidate-Aware Decoding for Diffusion Language Models](https://arxiv.org/abs/2607.28166) — training-free early-exit decoder (Confidence-Verified Commit) separating "where" vs "when" to stop denoising, fixing premature termination on long CoT; extends the remasking/confidence-schedule line (ReMDM-adjacent). arXiv preprint, submitted 2026-07-30 — [NEW]
+2. 5 | [Multi-Mask Diffusion Language Models for Few-Step Generation (MultiMDM)](https://arxiv.org/abs/2607.19686) — addresses MDM forward trajectories collapsing to one fully-masked terminal state (no entropy for consistency-style few-step sampling); closed-form ELBO supports continual training from existing pretrained MDMs. Authors include Quanquan Gu, Lexing Ying. arXiv preprint, submitted 2026-07-22 — [NEW]
+3. 4 | [Beyond the Bidirectional Promise: Re-evaluating the Robustness of Diffusion Language Models](https://arxiv.org/abs/2607.27386) — Microsoft team's parameter-matched robustness/calibration comparison (LLaDA-8B vs Llama-3-8B, Dream-7B vs Qwen2.5-7B) across 32 natural-perturbation + adversarial conditions; DLMs resist gradient-based adversarial suffixes but show no inherent edge under natural noise — counters "bidirectionality = robustness" claims. arXiv preprint, submitted 2026-07-29 — [NEW]
+4. 3 | [Diffusion Language Model for Recommendation (DLMRec)](https://arxiv.org/abs/2607.21519) — applies discrete diffusion LM (non-AR, bidirectional-context generation) to recommendation, an adoption/transfer signal for the discrete-diffusion toolkit outside core NLP. arXiv preprint, submitted 2026-07-23 — [NEW]
+5. 3 | [Parallel Decoding Distillation for Fast Image and Video Generation (PDD)](https://arxiv.org/abs/2607.26004) — NVIDIA (Neta Shaul, Chao Liu, Arash Vahdat, Julius Berner) trajectory-based distillation predicting multiple denoising steps per network call; image/video domain, but few-step distillation mechanics plausibly transfer to few-step dLLM decoding (same problem class as #2). arXiv preprint, submitted 2026-07-28 — [NEW]
+6. 2 | [Not All LLM Reasoning is Visible in the Chain-of-Thought](https://arxiv.org/abs/2607.22925) — general-LLM watch item: 13 frontier AR models use filler tokens to satisfy hidden objectives invisibly to CoT monitors (up to 13pp accuracy gains); a caution that non-AR "reasoning trace" evals need the same faithfulness scrutiny. arXiv preprint, submitted 2026-07-24 — [NEW]
+7. 2 | [Continuous Diffusion Scales Competitively with Discrete Diffusion for Language (RePlaid)](https://arxiv.org/abs/2605.18530) — outside strict window (submitted 2026-05-18) but flagged for a cold-start scan: first scaling law showing continuous DLMs rival discrete DLMs (20x compute gap vs AR, new SOTA PPL=22.1 on OpenWebText among continuous DLMs). arXiv preprint — [incremental/background]
+
+**Couldn't verify:**
+- arXiv:2607.23226 ("From Score Learning to Discretized Sampling") — unclear whether scope is text/discrete diffusion or continuous image-domain score models; dropped from ranked list rather than guessed.
+- All items above are days-old preprints with no confirmed code/weights release or independent reproduction yet — currently "attention," not yet "traction."
+- Web search surfaced low-tier aggregator claims (e.g. "Claude Opus 5," "Claude Fable 5," an "export control directive" against Anthropic, "Gemini 3.6 Flash") from sources reading as unreliable/possibly fabricated (llm-stats.com, thursdai.news-style roundups) — excluded from the digest entirely, flagging here so a human can sanity-check if any of this crosses their feed elsewhere.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Item #5's framing that PDD's distillation mechanics "plausibly transfer" to dLLM decoding is analogy, not a claim from the paper.
+- Item #6's framing as relevant to non-AR reasoning evals is extrapolation — the paper itself only tested autoregressive models.
 
 ---
 
@@ -45,9 +125,17 @@ _(empty — awaiting first scan)_
 <!-- Open questions, papers to read, people/labs to track, predictions with
 dates. Resolved items move to the "Resolved" note below with the outcome. -->
 
-- **Papers to read:** _(none yet)_
-- **People / labs to track:** _(seed via the monthly blind-spot audit)_
-- **Open questions:** _(none yet)_
+- **Papers to read:**
+  - [Halton Scheduler for Masked Generative Image Transformer](https://arxiv.org/abs/2503.17076) (ICLR 2025) — low-discrepancy, training-free unmasking schedule; test the 1-D text analogue against confidence-based decoding.
+  - [Chatterbox-Flash](https://arxiv.org/abs/2605.30748) — marginal-subtracted confidence scoring for parallel unmasking; cheap to try on any dLLM's decoder.
+  - [Discrete Neural Flow Samplers](https://arxiv.org/pdf/2505.17741) / [Scalable Discrete Diffusion Samplers](https://arxiv.org/abs/2502.08696) — data-free CTMC samplers from an energy; reframes alignment as sampler design rather than RL-on-samples.
+- **People / labs to track (seeded 2026-08-01):**
+  - Lindsten group, Linköping University — symmetry-constrained discrete diffusion ([WyckoffDiff](https://proceedings.mlr.press/v267/ekstrom-kelvinius25a.html)); watch for the "design the forward process to match domain corruption" idea generalizing to text.
+  - Linderman Lab, Stanford (w/ MSR) — [Informed Correctors / k-Gillespie's](https://arxiv.org/abs/2407.21243), [code](https://github.com/lindermanlab/informed-correctors); model-informed predictor-correctors for low-NFE sampling, directly relevant to dLLM decoding speed.
+  - Apple ML Research discrete-sampler line — [Discrete Neural Flow Samplers](https://machinelearning.apple.com/research/discrete-neural-flow); track for reward-tilted sampling as an alternative to GRPO-style dLLM RL.
+- **Open questions:**
+  - Does a low-discrepancy (Halton-style) unmasking schedule beat confidence-based decoding for text dLLMs? (from finding #2, 2026-08-01 audit)
+  - What is the "linguistically natural" corruption process for text diffusion — i.e., is generic uniform masking leaving performance on the table the way it did for ScDiVa (dropout-shaped) and WyckoffDiff (symmetry-shaped)? (from finding #9, 2026-08-01 audit)
 - **Predictions (with dates):** _(none yet)_
 
 ### Resolved
@@ -62,7 +150,46 @@ _(none yet)_
 fields / venues / labs surfaced, citation-expansion clusters, keyword-drift
 leads. These become new Watchlist entries. -->
 
-_(no audit has run yet)_
+### 2026-08-01 (first blind-spot audit)
+
+Anchor: **MDLM** (current applied non-NLP work forks from it — any BERT-style
+domain encoder becomes a generator by reweighting the MLM loss). D3PM pulled
+in separately for the materials/symmetry cluster where it's still the cited
+root. Full move-by-move detail (citation clusters, keyword-drift search
+vocab) lives in the agent transcript; this entry keeps the ranked synthesis.
+
+**Ranked findings (most likely to change how you approach your own work, first):**
+
+1. **Prior-calibrated confidence scoring** (speech TTS) — unmasking confidence is contaminated by token marginals; subtract the block-level marginal before ranking. One-line change, testable tonight on any dLLM. [arXiv 2605.30748](https://arxiv.org/abs/2605.30748) — preprint
+2. **Halton / low-discrepancy unmasking schedule** (vision, ICLR'25) — drop confidence-based selection, pick positions via a quasi-random low-discrepancy sequence to decorrelate the parallel batch. Training-free; the 1-D text analogue looks unclaimed. [arXiv 2503.17076](https://arxiv.org/abs/2503.17076) — top-tier
+3. **Data-free discrete diffusion samplers from an energy** (ICLR'25 + NeurIPS'25) — reframes dLLM alignment as learning a CTMC rate matrix whose stationary law *is* the reward-tilted distribution, instead of RL on samples. [arXiv 2502.08696](https://arxiv.org/abs/2502.08696), [arXiv 2505.17741](https://arxiv.org/pdf/2505.17741) — top-tier
+4. **Edit Flows + CTC-seeded refinement** (NeurIPS'25 / speech) — kills the fixed-canvas/padding assumption via an insert-delete-substitute CTMC; ASR adds "seed with a cheap alignment draft, then refine." [arXiv 2506.09018](https://arxiv.org/abs/2506.09018), [arXiv 2606.28732](https://arxiv.org/abs/2606.28732) — top-tier + preprint
+5. **Parallel-in-time Picard sampling** — parallelize over diffusion *steps* rather than tokens; composes with token-parallel decoding, unclaimed in dLLM-land. [arXiv 2607.00773](https://arxiv.org/abs/2607.00773) — preprint
+6. **Informed correctors / k-Gillespie's** (NeurIPS'25) — model-informed predictor-corrector; better quality-per-NFE at low step counts. [arXiv 2407.21243](https://arxiv.org/abs/2407.21243), [code](https://github.com/lindermanlab/informed-correctors) — top-tier
+7. **Discrete Walk-Jump Sampling** (ICLR'24 Outstanding Paper) — abandon the noise schedule entirely: one noise level, Langevin MCMC in smoothed space, one-step project back. Strongest empirical validation here (wet-lab, 97.5-100% expression success). [arXiv 2306.12360](https://arxiv.org/abs/2306.12360) — top-tier
+8. **Amortized twisted SMC (CDM)** — asymptotically exact reward-tilted sampling at <5% overhead; rigorous alternative to GRPO-style dLLM RL. [arXiv 2605.23346](https://arxiv.org/abs/2605.23346) — preprint
+9. **Domain-shaped forward processes** (ScDiVa, WyckoffDiff) — design the corruption process to match real data corruption (scRNA dropout) or quotient out invariances (crystal symmetry), instead of generic uniform masking. Open question for text. [arXiv 2602.03477](https://arxiv.org/abs/2602.03477), [arXiv 2502.06485](https://arxiv.org/abs/2502.06485) — top-tier
+10. **Gibbs correctors (GADD)** — training-free acceleration for uniform-rate (non-absorbing) models, relevant if revisiting SEDD-style uniform noise for self-correction. [arXiv 2605.27352](https://arxiv.org/abs/2605.27352) — preprint
+11. **Fixed-point-iteration one-step distillation** (vision) — a distillation recipe distinct from distribution matching (DiDi-Instruct); vision is ahead of text here. [arXiv 2605.21484](https://arxiv.org/pdf/2605.21484) — preprint
+12. **Kinetic-optimal paths / discrete Schrödinger bridges** — principled path design vs. hand-tuned mask schedules; longer-horizon bet. [arXiv 2412.03487](https://arxiv.org/pdf/2412.03487), [arXiv 2509.23348](https://arxiv.org/pdf/2509.23348) — top-tier / preprint
+13. **Protein/DNA method-reuse cluster** (MeMDLM, MapDiff, D3-for-DNA) — mostly confirms the MDLM/SEDD toolkit travels; useful as a collaboration surface / wet-lab-grade eval discipline more than a new technique. [MeMDLM](https://openreview.net/forum?id=SeslKuVb6z), [MapDiff](https://www.nature.com/articles/s42256-025-01042-6), [D3](https://www.biorxiv.org/content/10.1101/2024.05.23.595630v3.full) — mixed
+
+**5 unwatched venues/labs/communities (one verified result each):**
+
+- Interspeech/ICASSP + neural-audio-codec community — [ADDSE, Interspeech 2026](https://arxiv.org/abs/2602.22417) (hierarchical RVQ discrete diffusion)
+- Lindsten group, Linköping Univ. + ML4Science materials circuit — [WyckoffDiff, ICML 2025](https://proceedings.mlr.press/v267/ekstrom-kelvinius25a.html)
+- Neural-sampler / stat-physics community (Imperial + Apple ML Research) — [Discrete Neural Flow Samplers, NeurIPS 2025](https://machinelearning.apple.com/research/discrete-neural-flow)
+- Linderman Lab, Stanford + MSR — [Informed Correctors, NeurIPS 2025](https://arxiv.org/abs/2407.21243)
+- Virtual-cell/single-cell foundation-model community — [ScDiVa, ICML 2026](https://arxiv.org/abs/2602.03477)
+- (bonus) RL/robotics diffusion-policy line — [Awesome-Robotics-Diffusion](https://github.com/showlab/Awesome-Robotics-Diffusion) feed; concrete item [arXiv 2509.22963](https://arxiv.org/abs/2509.22963)
+
+**Couldn't verify / flagged by the scout as its own inference, not sourced:**
+- Venue of arXiv 2509.22963 (discrete diffusion RL policies) — OpenReview record exists but acceptance/venue unconfirmed; treat as preprint.
+- MapDiff exact publication date conflicting in search snippets (June 2025 vs Feb 2026); journal/DOI solid, date not.
+- Chatterbox-Flash (item 1) exact month conflicting (May vs June 2026); arXiv ID implies May.
+- ScDiVa's ICML 2026 poster page was search-attested only, not page-confirmed directly.
+- "Has not crossed into text diffusion" (Move 2 framing) is the scout's inference from negative search results, not a systematic lit check — highest confidence on Halton scheduling and prior-calibrated confidence being genuinely unclaimed; lowest confidence on variable-length edit modeling, since Edit Flows itself already ran text benchmarks.
+- Move 1 cluster sizes are impressionistic (no full citation-graph pull).
 
 ---
 
