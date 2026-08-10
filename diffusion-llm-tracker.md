@@ -36,6 +36,32 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-08-10 (scan)
+
+Window: 2026-08-06 to 2026-08-10 (since the 2026-08-06 scan). Quiet cycle:
+extensive arXiv (cs.CL/cs.LG/cs.AI) and Hugging Face Daily Papers searches
+turned up only one clearly in-window core item, plus one watch-tier item
+from just before the window that the prior scan missed. AURORA-LM
+(arXiv:2608.02602) resurfaced in this search pass but is NOT re-listed — it
+was already logged in the 2026-08-06 entry above. 2 items, not padded to
+8 — per the rubric, a short honest list beats padding.
+
+1. 5 | [Answer First, Reason Later: Commitment Order in Diffusion LLMs](https://arxiv.org/abs/2608.05687) — logs per-token commitment during LLaDA-8B decoding on GSM8K and shows unconstrained any-order decoding freezes the final answer at 15–24% of the trajectory, collapsing to answer-only outputs on up to 90% of problems as canvas grows; directly bears on remasking/scheduling design for reasoning-capable diffusion LMs, and is the latest entry in a fast-moving token-commitment-order sub-thread (see prior entries: "The Path Matters" 2605.24697, "Don't Commit Alone" 2607.04469, "Neither Parallel Nor Sequential" 2606.14620, "Where and When to Commit" 2607.28166). arXiv preprint, submitted 2026-08-06, no code/weights found — [NEW]
+2. 2 | [Test-Time Scaling in Reasoning LLMs: Inference Regimes, Evaluation, and Reproducibility](https://arxiv.org/abs/2608.04001) — large empirical/methodology study of test-time-compute regimes (deliberation, sampling+voting, search) for autoregressive reasoning LLMs; watch-tier because its evaluation/reproducibility framework plausibly transfers to how diffusion-LM inference-time-scaling claims should be benchmarked. arXiv preprint, submitted 2026-08-04 (missed by the 2026-08-06 scan's window) — [NEW]
+
+**Also noted (not scored/ranked, predates window, for situational awareness only):**
+- A first NeurIPS 2026 workshop dedicated to diffusion language models ("DiffuLM") has a paper deadline of 2026-08-29 — [workshop site](https://7amin.github.io/diffulm-neurips2026/) — expect a submission wave in the next 2–3 weeks.
+
+**Couldn't verify:**
+- No GitHub code/weights link found for "Answer First, Reason Later" (2608.05687) — traction unconfirmed, treat as attention-only for now.
+- Could not confirm via search whether any diffusion-LM-specific paper was newly featured on Hugging Face's Daily Papers trending list within this window — results returned only general/adjacent trending topics (long-horizon agents, video diffusion), not a diffusion-LM-specific trending entry.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- The exact arXiv submission timestamps (Aug 6, Aug 4) for the two items above are as reported by search-tool summarization of arXiv metadata, not independently re-verified against the raw arXiv abstract page HTML.
+- Framing the Test-Time Scaling paper's eval framework as "plausibly transferable" to diffusion-LM benchmarking is the scout's own relevance judgment, not a stated claim in the paper.
+
+---
+
 ### 2026-08-06 (scan)
 
 Window: 2026-08-02 to 2026-08-06 (since the 2026-08-03 scan). Active but
