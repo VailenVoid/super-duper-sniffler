@@ -36,6 +36,36 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-08-13 (scan)
+
+Window: 2026-08-10 to 2026-08-13 (since the 2026-08-10 scan), plus a backfill
+of 2026-08-06–2026-08-10 items the prior scan's window should have caught but
+didn't, plus one significant older item (2026-07-31) that appears to have
+slipped through every prior cycle. Genuinely thin for the strict Aug 10–13
+window — only one clearly in-window item surfaced despite ~15 targeted
+queries (arXiv ID-range probing, cs.CL/cs.LG date-string search, HF Daily
+Papers). Not padded to 8 — 5 items, per the rubric a short honest list beats
+padding.
+
+1. 5 | [DiffusionGemma Technical Report](https://arxiv.org/abs/2608.00146) — Google DeepMind's 26B-total/3.8B-active MoE discrete-diffusion LM, Apache-2.0 open weights, native [vLLM support](https://vllm.ai/blog/2026-06-10-diffusion-gemma), ~1,000–1,500 tok/s on one H100 (~4x faster than AR Gemma 4 per Google's own report); strongest traction signal (real weights + serving-framework adoption, not just a demo) this tracker has logged to date, yet it does not appear in any prior scan entry back to 2026-07-31 — a real gap, not a new find — [NEW, backfill/gap-flag]
+2. 5 | [Simplex Relaxation for Discrete Diffusion (Simplax)](https://arxiv.org/abs/2608.10615) — exact Dirichlet–categorical augmentation for uniform discrete diffusion that preserves the categorical marginal while yielding a tractable Rao–Blackwellized reverse-bridge objective and stochastic reverse sampler; a genuine new-training-objective contribution, in-window (submitted 2026-08-11), arXiv preprint, no code confirmed — [NEW]
+3. 4 | [Archer: Adaptive Reuse of Cached Hidden States for Efficient Rollback in Diffusion Language Models](https://arxiv.org/abs/2608.08086) — reversibility-aligned cache boundary + decoder-margin condition for reusing prompt hidden states across denoising steps; reports 2.57x mean speedup with improved Pass@1; **code released** ([github.com/Hxnng/Archer](https://github.com/Hxnng/Archer)) — genuine efficiency traction, not just attention; submitted 2026-08-08, missed by the 2026-08-10 scan's window — [NEW, backfill]
+4. 4 | [Unsure but Certain: Uncovering the Representation-Confidence Gap in Diffusion Language Models](https://arxiv.org/abs/2608.08791) — shows dLLMs internally detect their own errors accurately but externally reported confidence stays near-maximal regardless, and this ranking failure resists score recalibration and matched-noise training; directly bears on confidence-based remasking/unmasking-schedule design (the tracker's core sub-thread) — arXiv preprint, submitted 2026-08-09, missed by the 2026-08-10 scan's window — [NEW, backfill]
+5. 3 | [Diffusion LLMs as Targets and Adversaries: Mechanistic Safety Exploits](https://arxiv.org/abs/2608.07430) — shows safety alignment in DLLMs is mechanistically sparse and transferable across architectures, exposing new attack surfaces specific to iterative parallel denoising; watch/high-tier since it's evals/security rather than core sampling-schedule work, but relevant to anyone deploying a dLLM — arXiv preprint, submitted 2026-08-07, missed by the 2026-08-10 scan's window — [NEW, backfill]
+
+**Couldn't verify:**
+- DiffusionGemma's own reported speed/quality numbers (4x, ~1,000–1,500 tok/s) trace only to Google's technical report and Google-adjacent coverage (vLLM blog, Google dev blog) — no independent third-party benchmark or reproduction found yet.
+- The DiffusionGemma release-date discrepancy itself: multiple outlets (MarkTechPost, GIGAZINE, vLLM blog) date the public model release "June 10, 2026," while the arXiv technical report (2608.00146) shows a v1 timestamp of "Friday, 31 Jul 2026" — i.e., weights/blog reportedly predate the technical writeup by ~7 weeks; both dates are search-sourced but conflict, flagging for human sanity-check.
+- Could not confirm code/weight release for Simplex Relaxation (2608.10615) or Unsure but Certain (2608.08791) — no GitHub links surfaced for either; treat as arXiv-preprint-only.
+- Could not find any item with a confirmed submission date of 2026-08-12 or 2026-08-13 (today) specifically — likely search-index lag on the very newest arXiv IDs rather than a genuinely empty two days; worth a direct `arxiv.org/list/cs.CL/recent` check next cycle instead of relying on search engines alone.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Framing DiffusionGemma as having been "missed by every prior scan" is inferred from its absence in the tracker's changelog text, not a confirmed statement that prior scans searched for it and failed — it's possible it simply fell outside each cycle's strict date window every time by construction.
+- The characterization of DiffusionGemma as "the strongest traction signal this tracker has logged to date" is the scout's own comparative judgment across the changelog, not a sourced claim.
+- Scoring items 3–5 as "backfill" (i.e., that the 2026-08-10 scan's search pass should have caught them but didn't) is an inference from their arXiv IDs falling inside that scan's stated window combined with their absence from its entry — plausible but not something that can be proven as a search miss versus a deliberate exclusion by that prior run.
+
+---
+
 ### 2026-08-10 (scan)
 
 Window: 2026-08-06 to 2026-08-10 (since the 2026-08-06 scan). Quiet cycle:
