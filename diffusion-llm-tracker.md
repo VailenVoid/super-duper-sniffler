@@ -36,6 +36,35 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-08-17 (scan)
+
+Window: 2026-08-13 to 2026-08-17 (since the 2026-08-13 scan). Genuinely thin
+for the strict Aug 13–17 window — after ~30 targeted queries (arXiv ID-range
+probing across 2608.08xxx–2608.17xxx, cs.CL/cs.LG/cs.AI keyword search, HF
+Daily Papers, alphaXiv), only one item has a search-confirmed submission date
+strictly inside the window; the other three are backfill — legitimate misses
+from before Aug 13 that surfaced only on this pass. Not padded to 8 — 4 items,
+per the rubric a short honest list beats padding.
+
+1. 5 | [The data geometry of masking diffusion: Certified-optimal schedules via unmasking growth complexity](https://arxiv.org/abs/2608.13520) — Martin J. Wainwright; introduces "unmasking growth complexity" (UGC), a path-resolved data-geometry measure whose local increments directly bound KL discretization error, unifying Bernoulli-subset and fixed-cardinality unmasking schemes and yielding certified-optimal single-/multi-block schedules (provably within a constant factor of the oracle); a theory-grade companion to the tracker's remasking-schedule sub-thread — arXiv preprint, submitted 2026-08-13 (confirmed), no code found — [NEW]
+2. 4 | [Commitment Before Realization: When Classifier-Free Guidance Becomes Unnecessary in Masked Diffusion Language Models](https://arxiv.org/abs/2608.08082) — defines a "commitment horizon" per prompt: the earliest point at which switching off CFG for the rest of decoding is noninferior to full CFG; shows CFG benefit is highly prompt-specific and often front-loaded, directly actionable for cutting guidance compute without a quality hit — arXiv preprint, submitted 2026-08-08, missed by every prior scan back to 2026-08-10 — [NEW, backfill/gap-flag]
+3. 4 | [CORA-Diff: Confidence-Oriented Residual Acceptance for Efficient Diffusion Language Model Inference](https://arxiv.org/abs/2608.11235) — training-free confidence-and-persistence gating that only intervenes on positions a base transfer rule leaves unresolved; reports 2.70x/3.32x speedups over EOS-aware dense decoding on GSM8K/HumanEval (up to 13.14x under a fixed-horizon mechanism-isolation protocol), transfers to Dream without retuning (3.18–3.53x) — genuine efficiency-trick contribution in the core "cut sampling steps" bucket — arXiv preprint, no code found, submission date conflicts across search summaries (see Couldn't verify) — [NEW, backfill]
+4. 3 | [Diffuse to Compress: Leveraging Diffusion LMs for Lossless Compression](https://arxiv.org/abs/2608.11249) — first use of DLMs (rather than AR LLMs) as the probability model backing a neural lossless text/code compressor, targeting the throughput bottleneck that has kept LLM-based compression impractical; an adoption/transfer signal for the discrete-diffusion toolkit outside core NLP generation — arXiv preprint (Angelo Nardone, Paolo Ferragina), no code found, submission date conflicts across search summaries (see Couldn't verify) — [NEW, backfill]
+
+**Situational awareness (not scored/ranked):** two NeurIPS 2026 workshops dedicated to non-AR/diffusion generation now have confirmed listings via the [NeurIPS 2026 workshops announcement](https://blog.neurips.cc/2026/08/10/announcing-the-neurips-2026-workshops/) (Aug 10, 2026): **DiffuLM** ([site](https://7amin.github.io/diffulm-neurips2026/)) and **BeNTo: Beyond Next Token Prediction** ([site](https://bento-neurips.github.io/)), both with an Aug 29 submission deadline — expect a paper wave in the next 1–2 cycles as authors rush the deadline.
+
+**Couldn't verify:**
+- Submission-date conflicts on items 3–4 above: for CORA-Diff (2608.11235) one search summary reported "submitted July 31, 2026," and for Diffuse to Compress (2608.11249) one summary reported "submitted August 4, 2026" — both inconsistent with their arXiv ID prefixes (11xxx implies roughly Aug 11 given the month's sequential numbering, consistent with 2608.08082 confirmed as Aug 8 and 2608.13520 confirmed as Aug 13). Same date-extraction anomaly the 2026-08-13 entry flagged for DiffusionGemma — needs a direct arxiv.org abstract-page check, not just search-summary text.
+- A paper referenced in search snippets as "Escaping Confidence Trap: Evolutionary Decoding for Mathematical Reasoning in Diffusion LLMs" (authors reportedly incl. Zhenhong Sun, Hanqing Zhao, Yatao Bian, Dacheng Tao) could not be pinned to a real arXiv ID — a direct ID lookup (2608.00610) resolved to an unrelated paper ("Slides2MindMap"), meaning the search tool likely hallucinated or misattributed that ID. Excluded from the ranked list entirely rather than guessed; worth a direct author/title search next cycle.
+- Could not confirm code/weight release for any of the four ranked items above — all currently arXiv-preprint-only ("attention," not yet "traction").
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Inferring CORA-Diff's and Diffuse to Compress's actual submission dates from their arXiv ID numeric position within the August 2026 sequence (rather than an explicitly confirmed date string) is the scout's own extrapolation, not a directly retrieved fact — flagged above as a live date conflict, not resolved.
+- Framing 2608.08082 and 2608.11235 as "missed by every prior scan" is inferred from their absence in the tracker's changelog text combined with their submission dates falling inside previously-stated scan windows — plausible but not provably a search failure versus deliberate exclusion by those prior runs (same caveat the 2026-08-13 entry raised about DiffusionGemma).
+- The characterization of the window as "genuinely thin" / repeating a search-index-lag pattern from prior cycles is the scout's own comparative judgment across changelog entries, not a sourced claim.
+
+---
+
 ### 2026-08-13 (scan)
 
 Window: 2026-08-10 to 2026-08-13 (since the 2026-08-10 scan), plus a backfill
