@@ -36,6 +36,36 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-08-20 (scan)
+
+Window: 2026-08-17 to 2026-08-20 (since the 2026-08-17 scan). Genuinely quiet
+for the strict Aug 17–20 window itself — no diffusion-LM item could be
+confirmed with a search-verified submission date inside those four days (the
+closest hit, a v2 revision of "x-Prediction Flow," was originally submitted
+2026-06-27 and only got a same-content revision on 2026-08-17 — not a new
+result, not ranked). What did surface is three solid items from just before
+the window (Aug 12–14) that both this scan and the 2026-08-13/2026-08-17
+scans' windows should have caught but didn't — same search-index-lag pattern
+flagged in prior entries. 3 items, not padded to 8 — per the rubric, a short
+honest list beats padding.
+
+1. 5 | [Ripple-Pivot Search: Active Parallel Decoding for Diffusion Large Language Models](https://arxiv.org/abs/2608.11742) — training-free decoding method that identifies mid-entropy "pivot" positions whose early commitment triggers a measurable ripple-effect drop in uncertainty across remaining masked positions, then picks the pivot's token via lookahead evaluation to maximize downstream parallel-unmask benefit; a genuine new mechanism for the core "cut sampling steps while preserving quality" bucket, distinct from confidence-threshold approaches already in the tracker's decoding sub-thread — arXiv preprint, confirmed submitted 2026-08-12, no code found; missed by the 2026-08-13 scan's stated window (Aug 10–13) — [NEW, backfill/gap-flag]
+2. 4 | [DeMTS: Denoising Trajectories as Multivariate Time Series for Hallucination Detection in Diffusion Language Models](https://arxiv.org/abs/2608.14632) — argues prior D-LLM hallucination detectors compress the denoising uncertainty trajectory along either the token or the step axis and lose the 2-D token-step structure (inconsistent convergence, cross-token fault propagation); models the full trajectory as a multivariate time series over learnable latents instead — directly useful for anyone building trust/calibration tooling around iterative denoising, adjacent to the tracker's confidence-remasking thread — arXiv preprint, no code found; date conflict (see Couldn't verify) — [NEW, backfill]
+3. 3 | [Discrete Diffusion Language Models Are Training-Free Multi-Label Classifiers](https://arxiv.org/abs/2608.14649) — dLLM-SetScore: a training-free multi-label text classifier built from LLaDA-8B/Dream-7B by comparing yes/no answer-token probabilities at one masked position per candidate label, beating BART-MNLI/DeBERTa-NLI/SetFit/supervised baselines on 6 datasets with only a 200-example validation slice for threshold tuning; adoption/transfer signal for the discrete-diffusion toolkit outside core generation, accepted to SIAM SDM 2026 — **arXiv preprint + code** ([github.com/misterpawan/multilabel-classification-dllm-paper](https://github.com/misterpawan/multilabel-classification-dllm-paper.git)), genuine traction not just attention; date conflict (see Couldn't verify) — [NEW, backfill]
+
+**Couldn't verify:**
+- Submission-date conflicts on items 2–3: one search summary reported DeMTS as "submitted July 24, 2026" and the multi-label classifier as "submitted July 30, 2026," both inconsistent with their 2608.146xx arXiv ID prefixes (which, given the month's sequential numbering, imply ~Aug 14 — consistent with 2608.14430, independently confirmed as Aug 14 for an unrelated RL-for-diffusion paper). This is the same date-extraction anomaly flagged in the 2026-08-17 and 2026-08-13 entries (DiffusionGemma, CORA-Diff, Diffuse to Compress) — needs a direct arxiv.org abstract-page check, not just search-summary text.
+- Scope of ["Designing Reinforcement Learning for Diffusion Models: A Unified Path-Space View"](https://arxiv.org/abs/2608.14430) (confirmed submitted 2026-08-14) — unifies reverse-trajectory and forward-matching RL losses for diffusion models under one path-space principle, but search results gave no indication whether it targets text/language diffusion specifically or is scoped to image/general diffusion (references DiffusionNFT, typically an image-domain method); excluded from the ranked list rather than guessed — worth a direct check next cycle given RL-for-diffusion-LM is squarely core if it applies.
+- Code/weight release status for Ripple-Pivot Search (2608.11742) and DeMTS (2608.14632) — no GitHub links surfaced for either; treat as arXiv-preprint-only ("attention," not yet "traction").
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Framing items 1–3 as "missed by every prior scan" is inferred from their absence in the tracker's changelog text combined with their submission dates falling inside or just before previously-stated scan windows — plausible but not provably a search failure versus deliberate exclusion by those prior runs (same caveat raised in the 2026-08-17 and 2026-08-13 entries).
+- The characterization of this window as "genuinely quiet" for the strict Aug 17–20 range is the scout's own comparative judgment across ~30 queries this run, not a sourced claim — cannot rule out search-index lag on the very newest arXiv IDs.
+- Excluding general-LLM-news items surfaced this run (GLM-5.3, Gemini 3.7 Flash releases per low-tier aggregator sites like llm-stats.com/aireleasetracker.com) as non-field-shifting for diffusion-LM research is a judgment call, not a sourced fact — the releases themselves trace to aggregator pages of uncertain reliability, not primary sources, so they weren't verified independently either.
+- Excluding VibeVoice (a next-token-diffusion speech-synthesis system reportedly surfaced on HF trending ~Aug 18) as out-of-scope (speech domain, not core text diffusion-LM) is the scout's own relevance judgment.
+
+---
+
 ### 2026-08-17 (scan)
 
 Window: 2026-08-13 to 2026-08-17 (since the 2026-08-13 scan). Genuinely thin
