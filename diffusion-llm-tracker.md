@@ -36,6 +36,32 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-08-24 (scan)
+
+Window: 2026-08-20 to 2026-08-24 (since the 2026-08-20 scan). Genuinely quiet
+for the strict window itself — after ~30 targeted queries (keyword sweeps,
+direct arXiv-ID probing across 2608.14xxx–2608.24xxx, HF Daily Papers,
+author-tracking on Sahoo/Kuleshov/Nie/Li groups, social/newsletter sweeps),
+no diffusion-LM item could be confirmed with a search-verified submission
+date inside 2026-08-20–2026-08-24. One legitimate backfill item surfaced
+(~Aug 6, missed by both the 2026-08-06 and 2026-08-10 scans — confirmed not
+already logged in this tracker). 1 item, not padded to 8 — per the rubric, a
+short honest list beats padding.
+
+1. 4 | [Lost in Interpolation: Why Predictive Feedback Fails in Diffusion Language Models](https://arxiv.org/abs/2608.06529) — analyzes MDLM embedding geometry and shows the angle between the mask embedding and a position's predicted-token embedding stays near-constant across training, which throttles predictive feedback; proposes Spherical Soft-Masking (SLERP-based interpolation instead of linear) for faster convergence — a genuine new angle on the training-objective/embedding-geometry side of masked diffusion, directly relevant to the tracker's training-objective thread — arXiv preprint, ID implies submission ~2026-08-06, no code found; missed by both the 2026-08-06 scan (window ended 08-06) and the 2026-08-10 scan (window 08-06–08-10) — [NEW, backfill/gap-flag]
+
+**Couldn't verify:**
+- Whether the 2026-08-20–08-24 window is genuinely empty of diffusion-LM work or reflects search-index lag on the newest arXiv IDs (the same pattern flagged in every prior entry back to 2026-08-03) — worth a direct `arxiv.org/list/cs.CL/recent` check next cycle for IDs in the 2608.19xxx–2608.24xxx range specifically, rather than relying on search engines alone.
+- Scope of ["Designing Reinforcement Learning for Diffusion Models: A Unified Path-Space View"](https://arxiv.org/abs/2608.14430) (submitted ~2026-08-14, already flagged unresolved in the 2026-08-20 entry) — still unclear whether it targets text/language diffusion or is scoped to image/continuous diffusion (terminology in the abstract — AWM, DiffusionNFT — reads as image-diffusion RL literature); remains excluded from the ranked list rather than guessed.
+- Code/weight release status for "Lost in Interpolation" (2608.06529) — no GitHub link surfaced; treat as arXiv-preprint-only ("attention," not yet "traction").
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Framing 2608.06529 as "missed by both the 2026-08-06 and 2026-08-10 scans" is inferred from its absence from this tracker's changelog text combined with its arXiv-ID-implied date falling inside both those scans' stated windows — plausible but not provably a search failure versus deliberate exclusion by those prior runs (same caveat raised repeatedly in prior entries).
+- The characterization of 2608.14430's likely image-diffusion focus is inferred from terminology (AWM, DiffusionNFT) associated with image-diffusion RL literature, not a direct statement of modality in the retrieved abstract.
+- The characterization of this window as "genuinely quiet" is the scout's own comparative judgment across ~30 queries this run, not a sourced claim — cannot rule out search-index lag on the very newest arXiv IDs.
+
+---
+
 ### 2026-08-20 (scan)
 
 Window: 2026-08-17 to 2026-08-20 (since the 2026-08-17 scan). Genuinely quiet
