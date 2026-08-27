@@ -36,6 +36,32 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-08-27 (scan)
+
+Window: 2026-08-24 to 2026-08-27 (since the 2026-08-24 scan). Genuinely quiet
+overall — after ~22 queries (keyword search, direct arXiv ID-range probing for
+2608.24xxx–2608.27xxx, Hugging Face Daily Papers checks, author-targeted
+searches for Sahoo/Kuleshov/Schiff/Nie/Li groups), only 3 diffusion-LM items
+could be source-confirmed with a submission date inside the window, and all
+three landed on the same day (Aug 24), right at the window's opening edge.
+Nothing confirmed for Aug 25–27 despite direct probing — consistent with the
+search-index-lag pattern flagged in every prior entry back to 2026-08-03. 3
+items, not padded to 8 — per the rubric, a short honest list beats padding.
+
+1. 5 | [Minimax Optimality of Score-Entropy Discrete Diffusion](https://arxiv.org/abs/2608.20635) — theoretical paper establishing fundamental statistical limits of concrete-score estimation for uniform and masking discrete diffusions, i.e. the SEDD lineage directly; a formal optimality result on the anchor method itself, not just an empirical trick — arXiv preprint — [NEW]
+2. 5 | [SelFusion: Self-distillation for Diffusion Language Models](https://arxiv.org/abs/2608.22898) — new training-time self-distillation framework specific to masked DLMs (bidirectional KD between a "hard-mask" and "easy-mask" forward pass, no external teacher needed); reports beating external LLM/DLM-teacher KD baselines on instruction-following — code released ([repo](https://github.com/scai-research/SelFusion_official)), and one search snippet describes it as an ACL 2026 main-conference paper (unconfirmed, see below) — arXiv preprint + code — [NEW]
+3. 4 | [Accelerating Diffusion Language Models via Structured Suffix Modeling](https://arxiv.org/abs/2608.23167) — inference-efficiency method splitting the decode suffix into local/middle/tail regions with different retained-token counts per region during parallel decoding, aimed at cutting per-step compute in DLM inference; plausible drop-in for existing masked-diffusion decoding stacks — arXiv preprint — [NEW]
+
+**Couldn't verify:**
+- Whether diffusion-LM papers actually posted Aug 25–27 exist but simply haven't been indexed by search yet (the recurring lag issue from prior runs) — could not rule this out; worth a direct `arxiv.org/list/cs.CL/recent` re-check next cycle once indexing catches up on the 2608.25xxx+ range.
+- SelFusion's (2608.22898) "ACL 2026 main conference paper" framing — one search snippet stated this but it was not independently cross-checked against an ACL 2026 proceedings listing this run; flag for human confirmation.
+- General frontier-model news this window (e.g. GLM-5.3-Flash, DeepSeek-V4-Flash reportedly around Aug 26) surfaced in a general AI-news search but is not diffusion-LM-related and did not read as field-shifting for this beat, so it was excluded rather than padded in — flag in case there's a diffusion angle being missed.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- None beyond what's flagged above — all three included items have a search-confirmed arXiv ID and submission date; the SelFusion code-repo link comes directly from the search snippet, and the ACL 2026 venue claim is separately flagged as unconfirmed above.
+
+---
+
 ### 2026-08-24 (scan)
 
 Window: 2026-08-20 to 2026-08-24 (since the 2026-08-20 scan). Genuinely quiet
