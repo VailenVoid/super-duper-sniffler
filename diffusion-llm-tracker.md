@@ -36,6 +36,41 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-08-31 (scan)
+
+Window: 2026-08-27 to 2026-08-31 (since the 2026-08-27 scan). ~28 targeted
+queries (keyword sweeps for masked/discrete diffusion, score-entropy/D3PM
+lineage, any-order generation, inference-time scaling, remasking schedules;
+direct arXiv ID-range probing across 2608.26xxx–2608.31xxx; HF Daily Papers
+checks; author-tracking on Sahoo/Kuleshov/Nie/Li/Ermon groups; general-AI-news
+sweep for field-shifting items). Confirmed via arXiv's own submission-schedule
+note that Aug 29–30, 2026 are a weekend (no new arXiv listings), so the real
+business days in this window are Aug 27 (Thu), 28 (Fri), and 31 (Mon). Direct
+probing of the 2608.27xxx–2608.31xxx ID range and dated-phrase searches for
+"28 Aug 2026"/"31 Aug 2026" turned up no diffusion-LM item with a confirmed
+submission date past Aug 27 — consistent with the search-index-lag pattern
+flagged in every prior entry back to 2026-08-03. What did surface is a tight
+cluster of 3 items dated Aug 26–27, right at the window's opening edge (two
+are same-lab companion papers from the same day), none logged in the
+2026-08-27 entry. 3 items, not padded to 8 — per the rubric, a short honest
+list beats padding.
+
+1. 5 | [Dependency-Aware Revocable Decoding for Efficient Diffusion Large Language Model Inference](https://arxiv.org/abs/2608.26574) — training-free decoding framework (DARD) that splits tokens into masked/candidate/unmasked states and verifies candidates using a selective context that excludes less-reliable tokens, directly targeting the core problem that "more parallelism degrades quality" in dLLM decoding — squarely in the core sampling/remasking-schedule bucket — arXiv preprint, confirmed submitted 27 Aug 2026, no code found — [NEW]
+2. 5 | [Survival-Guided Length Control for Efficient Diffusion Language Models](https://arxiv.org/abs/2608.26374) — recasts length/stopping selection as a discrete-time survival problem over the EOS token; a training-free, plug-in length predictor addable to any existing DLM, reported up to 7x inference speedup while preserving reasoning/code-gen accuracy — a genuinely new angle on the inference-efficiency/decoding-schedule side of the field — arXiv preprint, confirmed submitted 26 Aug 2026 (accepted to EMNLP 2026 main conference, per search snippet, unconfirmed against the official accepted-papers list — see below), authors Kobyzev/Ghaddar/Cui; missed by the 2026-08-27 scan whose stated window (Aug 24–27) should have caught it — arXiv preprint — [NEW, backfill/gap-flag]
+3. 4 | [Visual Information-Guided Parallel Decoding for Diffusion Multimodal Large Language Models](https://arxiv.org/abs/2608.26580) — VIG-Sampler prioritizes which masked positions to unmask next based on attention to image tokens, for dMLLM parallel decoding; multimodal in scope (not pure text-DLM), but the underlying "which-token-to-commit-next" sampling mechanism plausibly transfers to text-only diffusion-LM decoding stacks; companion paper from the same lab as item #1 (overlapping authors: Wooje Park, Insu Lee, Byonghyo Shim), submitted same day — arXiv preprint, confirmed submitted 27 Aug 2026, no code found — [NEW]
+
+**Couldn't verify:**
+- Whether the Aug 28/31 business-day gap is genuinely empty of diffusion-LM submissions or reflects search-index lag on the newest arXiv IDs — same recurring caveat as every prior entry since 2026-08-03; worth a direct `arxiv.org/list/cs.CL/recent` re-check next cycle once indexing catches up on 2608.27xxx+.
+- Code/weight release status for all three items above — no GitHub links surfaced for any; treat all three as arXiv-preprint-only ("attention," not yet "traction").
+- The EMNLP 2026 main-conference acceptance claim for item #2 (Survival-Guided Length Control) — came from a single search snippet, not cross-checked against the EMNLP 2026 accepted-papers list directly.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Framing item #2 (2608.26374, confirmed Aug 26 submission) as "missed by the 2026-08-27 scan" is inferred from its absence in that changelog entry combined with its date falling inside that scan's stated window (Aug 24–27) — plausible but not provably a search failure vs. a deliberate exclusion by that prior run.
+- Judging the window as generally quiet past Aug 27 is the scout's own comparative read across ~28 queries this run, not a sourced fact.
+- Excluding general-LLM news this window (e.g., GLM-5.3-Flash reportedly ~Aug 26 per low-tier aggregator sites like llm-stats.com) as non-diffusion and non-field-shifting is a judgment call; the release claim itself traces only to aggregator pages, not a primary source, and was not independently verified.
+
+---
+
 ### 2026-08-27 (scan)
 
 Window: 2026-08-24 to 2026-08-27 (since the 2026-08-24 scan). Genuinely quiet
