@@ -36,6 +36,42 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-09-03 (scan)
+
+Window: 2026-08-31 to 2026-09-03 (since the 2026-08-31 scan; only a 3-day gap
+since this routine runs Mondays and Thursdays). ~20 targeted queries (keyword
+sweeps for masked/discrete diffusion, score-entropy/remasking-sampler theory,
+any-order/non-autoregressive generation, inference-time scaling, variable-length
+generation; direct probing for 2608.28xxx–2609.01xxx arXiv IDs and dated-phrase
+searches for "31 Aug 2026"/"1-3 Sep 2026"; HF Daily Papers checks; author-
+tracking on Sahoo/Kuleshov/Nie groups; general-AI-news sweep for field-shifting
+items). No item could be confirmed with a submission date strictly inside
+Sep 1–3 beyond one adjacent-topic paper (item 4) — consistent with the
+search-index-lag pattern flagged in every prior entry back to 2026-08-03.
+What did surface is two solid core items dated Aug 24 and Aug 27, right before
+this window, that the 2026-08-24/08-27/08-31 scans' stated windows should have
+caught but didn't, plus one EMNLP-2026-Findings item dated Aug 30 at the
+window's opening edge. 4 items, not padded to 8 — per the rubric, a short
+honest list beats padding.
+
+1. 5 | [Provably adaptive sampling with uniform and remasking discrete diffusion models](https://arxiv.org/abs/2608.23554) — Dmitriev, Huang & Wei (Wharton) prove an adaptive sampling guarantee (N = O(DTC(X₀)/ε) discretization steps suffice) showing the unfavorable dimension dependence of τ-leaping for uniform diffusion is a property of the *sampler*, not the forward process — a formal result squarely in the sampling-schedule/theory bucket, extending the same authors' PMLR-published "Efficient Sampling with Discrete Diffusion Models" (arXiv:2602.15008, Feb 2026 — relationship between the two papers not independently confirmed, see below) — arXiv preprint, confirmed submitted 24 Aug 2026, no code found; missed by both the 2026-08-24 scan (window ended 08-24) and the 2026-08-27 scan (window 08-24–08-27) — [NEW, backfill/gap-flag]
+2. 5 | [Trajectory-Level Speculative Decoding for Diffusion Language Models](https://arxiv.org/abs/2608.27514) — Pan, Gong, Guang et al. extend speculative decoding to dLLMs by drafting denoising trajectories (multi-token updates with explicit positions/unmasking order) via confidence-stratified tree exploration and verifying with blockwise parallel bidirectional-attention evaluation; reports 30–40% fewer denoising iterations, tokens-per-step up from 2.6→4.3, and 7–14x speedup over vanilla dLLMs (1.3x over Fast-dLLM) with <1% accuracy change — a genuine new mechanism in the core decoding/sampling-schedule bucket — arXiv preprint, ICML 2026 poster (confirmed via ICML virtual site), confirmed submitted 27 Aug 2026, no code found; missed by the 2026-08-31 scan (window 08-27–08-31) — [NEW, backfill/gap-flag]
+3. 4 | [CARVE: Verified Expansion for Variable-Length Generation in Diffusion Language Models](https://arxiv.org/abs/2608.30922) — Bouhedja, Mohamed & Shang tackle the fixed-length-generation limitation of diffusion LMs with a verification-gated expansion mechanism for variable-length output — direct continuation of the tracker's variable-length-generation thread (cf. 2602.07546, 2603.06123 in the general diffusion-LM literature) — arXiv preprint, accepted to EMNLP 2026 Findings (per search snippet, not cross-checked against the official accepted-papers list), submitted ~30 Aug 2026 per arXiv ID, no code found — arXiv preprint — [NEW]
+4. 2 | [Reliability Challenges in Diffusion Vision-Language Models](https://arxiv.org/abs/2609.01318) — Atabuzzaman & Thomas examine reliability failure modes specific to diffusion-based VLMs; multimodal in scope, not pure text-only diffusion-LM, but the reliability/failure-mode framing may transfer to text-diffusion trust work — watch-tier per the rubric (adjacent field, not clearly field-shifting on its own) — arXiv preprint, accepted to EMNLP 2026 (per search snippet), confirmed submitted 2 Sep 2026, no code found — [NEW]
+
+**Couldn't verify:**
+- Whether arXiv:2608.23554 (item 1) is a genuinely new result or an extended/journal version of the same authors' PMLR-published "Efficient Sampling with Discrete Diffusion Models: Sharp and Adaptive Bounds" (arXiv:2602.15008) — both concern adaptive sampling bounds for uniform/discrete diffusion with overlapping authorship; not resolved this run, flag for a direct abstract-diff check.
+- The EMNLP 2026 Findings/main-conference acceptance claims for items 3 and 4 — both came from search snippets, not cross-checked against the official EMNLP 2026 accepted-papers list.
+- Whether the Sep 1–3 window itself is genuinely thin on core diffusion-LM submissions or reflects the same search-index lag on the newest arXiv IDs flagged in every prior entry since 2026-08-03 — worth a direct `arxiv.org/list/cs.CL/recent` re-check next cycle once indexing catches up on 2609.01xxx+.
+- Code/weight release status for all four items above — no GitHub links surfaced for any; treat all four as arXiv-preprint-only ("attention," not yet "traction").
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Framing items 1–2 as "missed by" the 2026-08-24/08-27/08-31 scans is inferred from their absence in this tracker's changelog text combined with their confirmed submission dates falling inside or just before those scans' stated windows — plausible but not provably a search failure versus deliberate exclusion by those prior runs (same caveat raised in every prior entry back to 2026-08-20).
+- Judging the strict Sep 1–3 window as thin on core diffusion-LM work (beyond item 4) is the scout's own comparative read across ~20 queries this run, not a sourced fact — cannot rule out search-index lag on the very newest arXiv IDs.
+- Excluding this window's general-LLM news (Claude Fable 5.1, Qwen3.8 27B, and Gemini 3.8 Flash, all reportedly released Sep 1–2 per aggregator/release-tracker sites) as non-diffusion and non-field-shifting is a judgment call; none of these release claims were independently verified against a primary source (official blog/changelog), and were excluded rather than padded in per the rubric's "clearly field-shifting only" bar for watch-tier general-LLM items.
+
+---
+
 ### 2026-08-31 (scan)
 
 Window: 2026-08-27 to 2026-08-31 (since the 2026-08-27 scan). ~28 targeted
