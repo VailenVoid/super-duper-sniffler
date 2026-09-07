@@ -36,6 +36,32 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-09-07 (scan)
+
+Window: 2026-09-03 to 2026-09-07 (since the 2026-09-03 scan; 4-day gap, in
+line with the Monday/Thursday cadence). Multi-angle search (arXiv cs.CL/cs.LG/
+cs.AI new-submission queries, Hugging Face Daily Papers, HN/Reddit chatter,
+plus an explicit gap-check re-probe of Aug 24-Sep 3 for the index-lag pattern
+flagged in every prior entry back to 2026-08-03) turned up only two items that
+land inside the window with a confirmed date and clear diffusion-LM relevance.
+Both were independently re-verified this run (not just taken from the scout
+agent's report). Genuinely quiet window — 2 items, not padded to 8, per the
+rubric's "a short honest list beats padding."
+
+1. 5 | [Unlocking Lossless Speedups in LLMs via Discrete Diffusion](https://arxiv.org/abs/2609.04010) — Sahoo et al. (Ψ-Spec / "Uno") augment AR LLMs with a lightweight diffusion head trained via a cheap "Diffusion Distillation" phase to draw multiple tokens per step *losslessly* (same output distribution as the base AR model, no separate draft model unlike speculative decoding); reports up to 3x speedup over the base AR model and higher throughput than leading speculative-decoding methods at every batch size, with the 8B Uno beating the 26B DiffusionGemma and proprietary Mercury 2 on agentic/coding/long-context benchmarks — core relevance: a new inference-time-scaling/sampling mechanism explicitly benchmarked against the two leading production diffusion LMs, from an author (Sahoo) this tracker already tracks — arXiv preprint, confirmed submitted 3 Sep 2026 via direct search, no code/weights link found yet — [NEW]
+2. 3 | [LLaDA-Image: Building Strong Image Generators with Fully Open Training Recipes](https://arxiv.org/abs/2609.03796) — pairs a 6B DiT trained from scratch with a frozen vision-language module built on the LLaDA2.0-Mini masked-diffusion-LM backbone, released with open weights, training code and full recipe (github.com/inclusionAI/LLaDA-Image); sets new SOTA among open-source models on Qwen-Image-Bench (both tracks) and distills into a 2-4-step "Turbo" variant — adjacent rather than core (target task is image generation, not text), but a genuine traction signal (open weights + code, not just a demo) for the LLaDA lineage being reused as a backbone — arXiv preprint + code, confirmed ~1-3 Sep 2026 — [NEW]
+
+**Couldn't verify:**
+- Uno's benchmark claims (3x speedup, beating 26B DiffusionGemma and Mercury 2) are self-reported in a single new preprint — no independent reproduction, third-party benchmark, or released code/weights found yet. Traction is currently attention-only for this item; flag for a follow-up check once code/weights (if any) land.
+- Whether the Sep 3-7 window is genuinely thin on core diffusion-LM submissions or reflects the same search-index lag on the newest arXiv IDs flagged in every prior entry since 2026-08-03 — a direct re-probe of Aug 24-Sep 3 in this run surfaced nothing new beyond what the 2026-09-03 entry already logged, which is modest evidence against lag this time, but not conclusive.
+- LLaDA-Image's exact submission day (1st vs 2nd vs 3rd Sep) — the 2609 arXiv ID prefix confirms the week but sources gave slightly conflicting signals on the precise day; not independently pinned down against arxiv.org's own listing page.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Characterizing this window as "genuinely quiet" is an inference from absence of search hits across many queries, not a positive confirmation — cannot fully rule out that index lag will surface additional Aug 28-Sep 7 papers in a future scan.
+- A search hit for "Large-Language Models as a Cognitive Virus" (arXiv 2609.03344, Sep 3 2026) was excluded as a likely false positive — its use of "diffusion" appears to be in the epidemiological/social-adoption sense, not architectural — based only on the search snippet, not the full text, so this exclusion call is not fully verified.
+
+---
+
 ### 2026-09-03 (scan)
 
 Window: 2026-08-31 to 2026-09-03 (since the 2026-08-31 scan; only a 3-day gap
