@@ -36,6 +36,39 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-09-10 (scan)
+
+Window: 2026-09-07 to 2026-09-10 (since the 2026-09-07 scan; 3-day gap, in
+line with the Monday/Thursday cadence). Multi-angle search (arXiv cs.CL/cs.LG/
+cs.AI new-submission queries, Hugging Face Daily Papers, plus a check against
+what the 2026-09-07 entry already logged so those items aren't re-reported).
+No item this cycle rises to a new noising/objective-theory result in the
+SEDD/D3PM lineage or a new sampling-schedule theory paper — the strongest
+"core" items are distillation / one-step-block-generation work rather than
+new objective theory. 8 items surfaced with clear relevance; not padded.
+
+1. 5 | [A Ticket from Marginals to Joints: Coupled-Noise Distillation for One-Step Block Generation in Diffusion Language Models (CONDOR)](https://arxiv.org/abs/2609.06324) — trains a noise-conditioned teacher + student pair so a block of tokens can be committed in one forward pass instead of several diffusion steps; direct hit on training-objective/distillation lineage for faster sampling — arXiv preprint, no code repo found in search — [NEW]
+2. 5 | [Distilled Continuous Diffusion Language Models Can Write Code in Few Steps—or One (PlaidQ)](https://arxiv.org/abs/2609.04531) — 0.7B continuous-diffusion code model; distills a pretrained AR model into a bidirectional denoiser, few-step and one-step-functional variants, with code + checkpoints released (github.com/pengzhangzhi/plaidq); submitted Sep 3, pre-dates this window but was missed by the 2026-09-07 scan — arXiv preprint + code — [NEW]
+3. 4 | [Inception "Mercury 2.5" launch](https://www.businesswire.com/news/home/20260908593295/en/Inception-Launches-Mercury-2.5-the-Next-Tier-of-Intelligence-for-Diffusion-LLMs) — production dLLM update, ~1,107 tok/s, context raised 128K→260K, tunable reasoning + tool use, positioned against Gemini Diffusion; real shipped-API traction (OpenRouter/Baseten listings), though no technical report disclosing objective/schedule changes was found — lab blog — [NEW]
+4. 4 | [In-Place Instruction Following in Diffusion Language Models (GRAFT)](https://arxiv.org/abs/2609.07160) — formalizes "in-place prompting" (bidirectional dLLMs anchoring constraints at arbitrary positions, a capability AR models lack), ships IIF-Bench and a constraint-aware SFT+preference-optimization framework; +15.35 pts avg across 4 dLLMs — arXiv preprint, no code repo found — [NEW]
+5. 3 | [Miles v0.1: Production-Level Post-Training](https://arxiv.org/abs/2609.08368) — full-stack RL/post-training framework (SGLang rollouts, Megatron/FSDP backends) extending to diffusion models (full-parameter RL, LoRA RL, on-policy distillation); infra rather than new method, but a real code release and adoption path for diffusion-LM RL post-training (github.com/radixark/miles, github.com/radixark/miles_diffusion) — arXiv preprint + code — [NEW]
+6. 3 | [Line-Coupled Language Model (LCLM)](https://arxiv.org/abs/2609.07129) — autoregressive, not diffusion, but directly adjacent: advances multiple text lines in parallel via line-staggered rotary positions, motivated explicitly against diffusion/insertion-based/MTP parallel-generation approaches; code released (github.com/duoduoyeah/lclm) — useful comparator for diffusion-LM parallel-decoding claims — arXiv preprint + code — [NEW]
+7. 2 | [Diffusion Language Models for Mobile Edge Agentic AI: Foundations, Applications, and Challenges](https://arxiv.org/abs/2609.04778) — survey/position paper on latency/energy/bandwidth suitability of DLMs for edge agents; no new empirical results — watch-tier — arXiv preprint — [NEW]
+8. 2 | [Decomposition-Guided Diffusion Language Models for Inertial Confinement Fusion Prediction (ICF-DLM)](https://arxiv.org/abs/2609.07756) — applies diffusion-LM-style bidirectional denoising to a physics time-series forecasting task (NIF fusion shots); evidence of methodology transfer outside text, not directly actionable for a text-focused researcher — arXiv preprint — [NEW]
+
+**Couldn't verify:**
+- Whether CONDOR (2609.06324) or GRAFT (2609.07160) have released code/checkpoints — search turned up no repo link for either; could be unindexed rather than genuinely absent.
+- Mercury 2.5's actual technical changes (new noise schedule? new objective vs. Mercury 2?) — all sources found are marketing/blog-tier (Businesswire, AlphaSignal, tech blogs), not a technical report; the original Mercury arXiv paper (2506.17298) predates this release and was not updated in search results.
+- PlaidQ's and LCLM's GitHub repos exist per search snippets, but star counts / commit activity / independent reproductions were not checked — traction level beyond "a repo exists" is unconfirmed.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- "10x faster than Gemini Diffusion" for Mercury 2.5 is sourced from a single blog title (tech-insider.org), not cross-checked against a benchmark table — treat as unverified.
+- "No code repo found" for CONDOR and GRAFT is an absence-of-evidence claim from search only, not a confirmed fact about the papers.
+- PlaidQ's submission date (Sep 3, 2026) is sourced from one search-tool summary of arXiv's listing page, not independently re-verified against the abs page timestamp.
+- ICF-DLM and Mobile-Edge-survey relevance scores (2/5) are judgment calls per the rubric's "watch" tier, not derived from an external ranking signal.
+
+---
+
 ### 2026-09-07 (scan)
 
 Window: 2026-09-03 to 2026-09-07 (since the 2026-09-03 scan; 4-day gap, in
