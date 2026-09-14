@@ -36,6 +36,34 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-09-14 (scan)
+
+Window: 2026-09-10 to 2026-09-14 (since the 2026-09-10 scan; 4-day gap, in
+line with the Monday/Thursday cadence). Multi-angle search (~25 queries:
+arXiv cs.CL/cs.LG/cs.AI new-submission listings, Hugging Face Daily Papers,
+DailyArXiv tracker, alphaXiv, EMNLP 2026 accepted-papers list, model-release
+news, lab/social chatter). **Genuinely quiet window — no item clears the bar
+of (a) a confirmed arXiv submission/revision date inside the window and (b)
+not already logged in the 2026-09-10 entry.** No top-8 is reported; padding
+it would violate the rubric. Two candidates surfaced that looked promising
+but were pre-window on primary-source inspection (listed below for
+transparency, not as this cycle's picks):
+
+1. 3 | [Continuous Diffusion Scales Competitively with Discrete Diffusion for Language (RePlaid)](https://arxiv.org/abs/2605.18530) — establishes a scaling law for continuous DLMs (~20x compute gap vs. AR, beats Duo/MDLM in the over-trained regime); core-rubric topic, but the arXiv abstract page gives original submission as 18 May 2026, not inside this window — a third-party tracker (DailyArXiv GitHub bot) attributed activity to "Sept 9" but no v2/v3 revision was confirmed on arXiv itself — arXiv preprint — [incremental, pre-window]
+2. 3 | [SAC-Copula: Quality-Preserving Watermarking for Diffusion LMs via Smooth Correlated Gumbel Fields](https://arxiv.org/abs/2608.20839) (EMNLP 2026 Findings) — copula-correlated Gumbel perturbations for DLM watermark quality preservation — verified v1 submission is 21 Aug 2026, before the window; the same tracker bot attributed "Sept 10" activity that contradicts the primary source — arXiv preprint — [incremental, pre-window]
+
+**Couldn't verify:**
+- Whether RePlaid (2605.18530) has an actual Sept revision (v2/v3) — a DailyArXiv GitHub-bot tag ("2026-09-09") is the only signal; arXiv's own revision-history diff view was not checked directly.
+- Whether SAC-Copula's tracker-bot "2026-09-10" tag reflects a real arXiv revision, an EMNLP-acceptance-notice bump, or bot lag — contradicts the confirmed 21-Aug-2026 v1 date; not resolved against arXiv's revision history.
+- LLaDA2.2-mini (inclusionAI, 16B-MoE diffusion-agent checkpoint) appeared on Hugging Face 5 Sept 2026 with no paper/announcement (per orcarouter.ai) — predates the window so not reported as new, but a companion technical report could plausibly land in or after this window; flagged for next cycle.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- The DailyArXiv bot's per-paper "dated" field methodology (original submission vs. revision vs. crawl date) was not independently verified; arXiv's own abstract-page submission history was treated as ground truth over the bot's tag.
+- Whether any EMNLP 2026 diffusion-LM papers had arXiv postings refreshed in this window as camera-ready revisions was not checked — this is a plausible source of "quiet" activity that a new-submission-only search would miss.
+- Characterizing the window as "genuinely quiet" is an inference from absence of hits across ~25 queries, not a positive confirmation that no core paper was submitted in this window.
+
+---
+
 ### 2026-09-10 (scan)
 
 Window: 2026-09-07 to 2026-09-10 (since the 2026-09-07 scan; 3-day gap, in
