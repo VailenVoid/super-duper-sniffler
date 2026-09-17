@@ -36,6 +36,35 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-09-17 (scan)
+
+Window: 2026-09-14 to 2026-09-17 (since the 2026-09-14 scan; 3-day gap, in
+line with the Monday/Thursday cadence). Searched arXiv cs.CL/cs.LG/cs.AI new
+submissions, Hugging Face Daily Papers, and multiple third-party arXiv
+tracker bots (jiangnanhugo/DailyArXiv, wuyan-duan/daily-paper-push,
+xllm-io/daily-papers), cross-checking dates against primary arXiv abstract
+pages. **Second consecutive quiet window** — only one item clears the bar of
+(a) a confirmed in-window arXiv submission date and (b) not already logged
+in the 2026-09-14 entry. Not padding to 8.
+
+1. 5 | [Register Tokens for Bounded-State Reasoning in Diffusion Language Models](https://arxiv.org/abs/2609.16372) — fixed-position "register tokens" carry reasoning progress as continuous hidden state across generation chunks in masked dLLMs (tested on LLaDA and Dream), letting decoded text be cleared while reasoning state persists rather than being carried as text; reports up to +8.5 pts math / +19.5 pts code vs. discrete-text carry-over. Directly on-rubric for inference-time scaling / long-horizon decoding in diffusion LMs — v1 confirmed submitted 2026-09-14 on the arXiv abstract page — arXiv preprint — [NEW]
+
+**Follow-up from last cycle:** LLaDA2.2-mini (inclusionAI) still has no companion technical report as of 2026-09-17. Checked inclusionAI's `LLaDA2.X` GitHub repo and Hugging Face directly — tech-report PDFs exist for LLaDA2.0/2.1/2.2 ("flash") but nothing mini-specific or dated to the Sept 5 HF drop. Treat "still no report" as reasonably solid but not provably exhaustive — inclusionAI has a history of quiet repo-only drops without immediate write-ups.
+
+**Near-misses, just outside the window (context only, not counted):**
+- [CanvasAnneal: Curriculum Reinforcement Learning for Diffusion Language Models](https://arxiv.org/abs/2609.13060) — v1 submitted 2026-09-11, 3 days before window opens; injects teacher reasoning traces into the diffusion canvas for warm-started RL exploration (diffu-GRPO improvement on MATH500/Countdown/Tau2). Would likely score 4-5 in-window — arXiv preprint — [pre-window]
+- [A Ticket from Marginals to Joints: Coupled-Noise Distillation for One-Step Block Generation in Diffusion Language Models](https://arxiv.org/abs/2609.06324) — v1 submitted 2026-09-06, well outside window — arXiv preprint — [pre-window]
+
+**Couldn't verify:**
+- Whether the "still no LLaDA2.2-mini report" finding is exhaustive — a report could exist in a venue not well-indexed by search (e.g. a Chinese-language post, or an un-indexed repo commit); recommend a direct check of the GitHub commit log and the HF model card's Files tab.
+- Whether any additional diffusion-LM papers landed on 2026-09-16 or 2026-09-17 specifically beyond what tracker-bot issue pages surfaced — the raw arXiv cs.CL listing for those exact dates was not walked directly, only searched.
+- The Register Tokens paper's novelty relative to prior "state carrying" work (e.g. a cited prior "State over Tokens" line of work) — only abstract-level summaries were reviewed, not the full paper, so positioning-vs-prior-work claims are secondhand.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- Framing this as the "second consecutive quiet window" trusts the 2026-09-14 entry's own characterization rather than independently re-verifying that prior scan's search coverage.
+- The "would likely score 4-5" judgment on CanvasAnneal is the scout's own rubric application, not a sourced claim.
+- The inference that inclusionAI's pattern of quiet drops (LLaDA-Image, LLaDA-UI, LLaDA2.2-mini) means a report is delayed rather than simply absent is speculation, not evidenced.
+
 ### 2026-09-14 (scan)
 
 Window: 2026-09-10 to 2026-09-14 (since the 2026-09-10 scan; 4-day gap, in
