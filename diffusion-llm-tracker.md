@@ -36,6 +36,34 @@ status ∈ {hot, cooling, watch}. Demote/remove stale items every weekly pass. -
 consolidates the trailing week's daily entries into a single weekly rollup and
 prunes duplicates. This section may grow — nobody scrolls it daily. -->
 
+### 2026-09-21 (scan)
+
+Window: 2026-09-17 to 2026-09-21 (since the 2026-09-17 scan, in line with the
+Monday/Thursday cadence). Searched arXiv cs.CL/cs.LG/cs.AI new submissions and
+Hugging Face Daily Papers proxies; every date below checked against the arXiv
+abstract-page submission timestamp, not just search snippets. **Third
+consecutive quiet window** — only two items clear the bar of a confirmed
+in-window submission date and genuine novelty. Not padding to 8.
+
+1. 5 | [Zarya: A Hybrid Autoregressive–Masked Diffusion Language Model with Flexible Training and Dual-Mode Inference](https://arxiv.org/abs/2609.19868) — jointly trains one architecture on both an AR objective and a masked-diffusion objective over variable-size "slots" with a curriculum from fine-grained AR to coarse-grained diffusion; an inference-time flag switches between MDM sampling (first-hitting denoising) and slotted speculative decoding from the same checkpoint. Real traction: 0.6B/1.7B/4B weights released on HF (ai-forever/Zarya-4B/-1.7B/-0.6B) alongside the paper, not just a demo. v1 submitted 2026-09-17 — arXiv preprint + code/weights — [NEW]
+2. 5 | [Parallelism, critical windows, and separations among diffusion language models](https://arxiv.org/abs/2609.20539) (Sitan Chen, Liye Wang) — theory paper giving a fine-grained comparison of parallelism capacity across masked, uniform, and Gaussian diffusion; proves uniform/Gaussian diffusion can sample in a number of forward passes scaling with the dual total correlation of the data distribution, formally separating the paradigms. Bears on how many denoising steps a masked dLLM fundamentally needs relative to alternatives. v1 submitted 2026-09-17 15:10 UTC, 90 pages (cs.LG/cs.DS/math.ST) — arXiv preprint — [NEW]
+
+**Follow-up from last cycle:** LLaDA2.2-mini (inclusionAI) still has no dedicated technical report as of 2026-09-21. The `LLaDA2_2_tech_report.pdf` in inclusionAI/LLaDA2.X on GitHub covers the LLaDA2.2-flash release from July 2026, not the mini variant that quietly appeared on Hugging Face on 2026-09-05. Third-party coverage (orcarouter.ai) confirms this was an unannounced repo drop and speculates a report "could follow," but none has appeared. Thread stays open, no change since 2026-09-17.
+
+**Near-misses, just outside the window (context only, not counted):**
+- [Representation-based Masked Diffusion Model (RMDM)](https://arxiv.org/abs/2609.12382) — v1 submitted 2026-09-11, 6 days before window opens; uses text representations to add global-semantic coordination to parallel token updates in MDMs, addressing the classic "independent unmasking → incoherence" failure mode. Worth a look if it resurfaces with a v2 or code release — arXiv preprint — [pre-window]
+- CanvasAnneal and the Coupled-Noise Distillation paper — already logged as near-misses in the 2026-09-17 entry (submitted 09-11 and 09-06 respectively); no new information found this cycle.
+
+**Couldn't verify:**
+- Whether the `LLaDA2_2_tech_report.pdf` on GitHub was ever updated/re-versioned to add LLaDA2.2-mini-specific details — no file-level commit-history metadata was retrievable, only a July 2026 social-media share date for the flash report.
+- Whether "Window-Diffusion" (windowed token pruning/caching for dLLM inference, mentioned as accepted to "APPT 2026") has an arXiv posting inside this window — no direct arXiv link or submission date could be found, only secondary mentions.
+- Whether any Hugging Face Daily Papers items specific to 2026-09-18/19/20 beyond what's captured above exist — the daily-papers aggregator pages found were low-detail snippets without confirmable per-paper in-window dates.
+
+**Unverified claims made by the scout (own inference, not sourced):**
+- The characterization of item #2's practical implication ("bears on how many denoising steps a masked dLLM fundamentally needs") is the scout's own inference from the abstract's dual-total-correlation result, not a claim made verbatim in the paper.
+- The description of RMDM's benefit as addressing "the classic independent-unmasking-to-incoherence failure mode" paraphrases the abstract's stated motivation rather than quoting it directly.
+- Calling this the "third consecutive quiet window" trusts the prior two scans' own characterizations rather than independently re-verifying their search coverage.
+
 ### 2026-09-17 (scan)
 
 Window: 2026-09-14 to 2026-09-17 (since the 2026-09-14 scan; 3-day gap, in
